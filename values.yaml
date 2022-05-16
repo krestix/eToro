@@ -43,18 +43,15 @@ service:
 ingress:
   enabled: true
   className: ""
-  annotations: {} 
+  annotations: 
+    ingress.kubernetes.io/rewrite-target: / 
     #kubernetes.io/ingress.namespace: ingress
          # kubernetes.io/tls-acme: "true"
   hosts:
-       - paths:
+       - host: exmp.local.host
+         paths:
           - path: /kristina
             pathType: ImplementationSpecific
-            backend:
-              service: 
-                name: nginx-ingress-controller.ingress.svc.cluster.local
-                port:
-                  number: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
