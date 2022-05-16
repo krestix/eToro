@@ -1,12 +1,12 @@
 {{- if .Values.keda.enabled }}
-apiVersion: keda.k8s.io/v1alpha1
+apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: {scaled-object-name}
+  name: {{ .Release.Name }}-test
 spec:
   scaleTargetRef:
-    deploymentName: {deployment-name} 
-    containerName: {container-name}                                   
+          name: {{ .Release.Name }}-keda
+          kind: Deployment          
   pollingInterval: {{ .Values.keda.pollingInterval | default "30" }} 
   cooldownPeriod:  {{ .Values.keda.cooldownPeriod | default 300 }}     # Optional. Default: 300 seconds
   minReplicaCount: {{ .Values.keda.minReplicaCount | default "0" }}    # Optional. Default: 0
@@ -15,8 +15,8 @@ spec:
     - type: cron
       metadata:
         timezone: Asia/Israel
-        start: * * 8 * *
-        end: * * 12 * * 
+        start: "* * 8 * *"
+        end: "* * 12 * *"
         desiredReplicas: "1"
     - type: cpu
       metadata:
@@ -26,4 +26,4 @@ spec:
       metadata:
         type: AvarageValue
         value: "70"
-{{ end }}
+  {{ end }}

@@ -83,7 +83,7 @@ tolerations: []
 affinity: {}
 
 keda:
-  enabled: false
+  enabled: true
   minReplicaCount: 1
   maxReplicaCount: 10
   cooldownPeriod: 30
