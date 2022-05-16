@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test
+spec:
+  #tls:
+  #- secretName: tls-secret
+  rules:
+  - http:
+      paths:
+        - path: /kristina
+          pathType: Prefix
+          backend:
+            service:
+              name: test2-simplechart
+              port:
+                number: 80
