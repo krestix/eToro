@@ -11,6 +11,7 @@ pipeline {
 		     reuseNode true
 		     }
 		    }
+		steps{
 		script{
 		     steps {
                       if(params.STAGE == 'deploy'){
@@ -21,6 +22,7 @@ pipeline {
 		        echo 'wrong decision'
 		      }
 		     }
+		}
 		}
 	}
     }
