@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-		WORKSPACE="/home/azureuser"
+		JENKINS_HOME="/home/azureuser"
 	}
     stages {
 	    stage('Setup parameters') {
