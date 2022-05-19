@@ -8,7 +8,7 @@ pipeline {
             steps {
                 if(params.STAGE == 'deploy'){
 		}
-		elif(params.STAGE == 'destroy'){
+		else if(params.STAGE == 'destroy'){
 		}
 		else{
 		  echo 'wrong decision'
