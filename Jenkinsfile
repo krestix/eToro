@@ -7,7 +7,7 @@ pipeline {
         stage('state') {
 		agent {
 		   docker {
-		     image 'alpine\helm'
+		     image 'alpine/helm'
 		     reuseNode true
 		     }
 		    }
