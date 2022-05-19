@@ -1,7 +1,6 @@
 pipeline {
     agent any
-    parameters {
-	string(name:'STAGE', choices: ['deploy','destroy'], description: 'deploy/destroy')
+	parameters([string(name:'STAGE', choices: ['deploy','destroy'], description: 'deploy/destroy'])
     }
     stages {
         stage('state') {
