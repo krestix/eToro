@@ -1,14 +1,14 @@
 pipeline {
     agent any
     parameters {
-	string(name:'STAGE', defaultValue: 'deploy', description: 'deploy/destroy')
+	string(name:'STAGE', choices: ['deploy','destroy'], description: 'deploy/destroy')
     }
     stages {
         stage('state') {
-            steps {
 		agent {
 		   docker {
 		     image 'alpine\helm'
+		     reuseNode true
 		     }
 		    }
 		     steps {
@@ -19,10 +19,8 @@ pipeline {
 	  	      else{
 		        echo 'wrong decision'
 		      }
-                     }
-                   }
-                }
-            }
-        }
-    
-
+		     }
+	}
+    }
+}
+             
