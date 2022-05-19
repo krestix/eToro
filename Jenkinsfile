@@ -4,7 +4,7 @@ pipeline {
 	string(name:'STAGE', defaultValue: 'deploy', description: 'deploy/destroy')
     }
     stages {
-        stage(${params.STAGE}) {
+        stage('state') {
             steps {
                 if(params.STAGE == 'deploy'){
 		}
