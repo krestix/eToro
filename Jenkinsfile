@@ -2,6 +2,20 @@ pipeline {
     agent any
 	parameters([string(name:'STAGE', choices: ['deploy','destroy'], description: 'deploy/destroy')])
     stages {
+	    stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['deploy', 'destroy'], 
+                                name: 'STAGE'
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
         stage('state') {
 		agent {
 		   docker {
