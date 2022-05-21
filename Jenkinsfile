@@ -1,9 +1,23 @@
 pipeline {
     agent any
-    parameters {
-	string(name:'STAGE', choices: ['deploy','destroy'], description: 'deploy/destroy')
-    }
+	environment {
+		JENKINS_HOME="/home/azureuser"
+	}
     stages {
+	    stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['deploy', 'destroy'], 
+                                name: 'STAGE'
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
         stage('state') {
 		agent {
 		   docker {
@@ -11,6 +25,8 @@ pipeline {
 		     reuseNode true
 		     }
 		    }
+		steps{
+		script{
 		     steps {
                       if(params.STAGE == 'deploy'){
                         sh 'helm install test-chart . -n kristina
@@ -22,7 +38,9 @@ pipeline {
 		        echo 'wrong decision'
 		      }
 		     }
+		}
+		}
 	}
     }
+
 }
-             
