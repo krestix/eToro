@@ -6,7 +6,7 @@ pipeline {
     stages {
 	    stage('Setup parameters') {
             steps {
-		    su kristina
+		    su azureuser
                 script { 
                     properties([
                         parameters([
