@@ -5,6 +5,12 @@ pipeline {
 	}
     stages {
 	    stage('Setup parameters') {
+	       agent {
+		   docker {
+		     image 'alpine/helm'
+		     reuseNode true
+		     }
+		    }
             steps {
                 script { 
                     properties([
