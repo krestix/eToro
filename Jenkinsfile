@@ -22,7 +22,6 @@ pipeline {
 		agent {
 		   docker {
 		     image 'alpine/helm'
-		     reuseNode true
 		     }
 		    }
 		steps{
