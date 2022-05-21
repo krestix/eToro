@@ -16,7 +16,6 @@ pipeline {
                         ])
                     ])
                 }
-		    		    		    sh 'su azureuser'
             }
         }
         stage('state') {
