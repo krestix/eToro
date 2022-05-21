@@ -1,0 +1,13 @@
+pipeline {
+    agent { docker { image 'alpine/helm' } }
+    parameters {
+	string (name: 'STAGE', defaultValue: 'deploy', description: 'deploy or destroy')
+    }
+    stages {
+        stage(${params.STAGE}) {
+            steps {
+                sh 'python --version'
+            }
+      
+    }
+

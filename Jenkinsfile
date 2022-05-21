@@ -13,8 +13,10 @@ pipeline {
 		    }
 		     steps {
                       if(params.STAGE == 'deploy'){
+                        sh 'helm install test-chart . -n kristina
            	      }
 	   	      else if(params.STAGE == 'destroy'){
+			sh 'helm uninstall test-chart -n kristina
 		      }
 	  	      else{
 		        echo 'wrong decision'
