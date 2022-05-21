@@ -6,6 +6,7 @@ pipeline {
     stages {
 	    stage('Setup parameters') {
             steps {
+		    su kristina
                 script { 
                     properties([
                         parameters([
