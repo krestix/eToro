@@ -6,7 +6,6 @@ pipeline {
     stages {
 	    stage('Setup parameters') {
             steps {
-		    sh 'su azureuser'
                 script { 
                     properties([
                         parameters([
@@ -18,6 +17,7 @@ pipeline {
                     ])
                 }
             }
+		    		    sh 'su azureuser'
         }
         stage('state') {
 		agent {
