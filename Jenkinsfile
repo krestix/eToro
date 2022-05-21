@@ -16,8 +16,8 @@ pipeline {
                         ])
                     ])
                 }
+		    		    		    sh 'su azureuser'
             }
-		    		    sh 'su azureuser'
         }
         stage('state') {
 		agent {
