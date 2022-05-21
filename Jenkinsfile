@@ -19,11 +19,6 @@ pipeline {
             }
         }
         stage('state') {
-		agent {
-		   docker {
-		     image 'alpine/helm'
-		     }
-		    }
 		steps{
 		script{
 		     steps {
